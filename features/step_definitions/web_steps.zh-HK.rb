@@ -75,8 +75,9 @@ end
 # end
 
 # When /^(?:|I )check "([^"]*)"$/ do |field|
-#   check(field)
-# end
+當 /^(?:|我)在"([^\"]*)"框打勾$/ do |field|
+  check(field)
+end
 
 # When /^(?:|I )uncheck "([^"]*)"$/ do |field|
 #   uncheck(field)
