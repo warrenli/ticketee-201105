@@ -10,3 +10,7 @@ Given /^there are the following users:$/ do |table|
     @user.confirm! unless unconfirmed
   end
 end
+
+Given /^"([^\"]*)" has confirmed their account$/ do |email|
+  User.find_by_email(email).confirm!
+end

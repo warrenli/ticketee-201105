@@ -12,3 +12,7 @@
     @user.confirm! unless unconfirmed
   end
 end
+
+假設  /^"([^\"]*)"已確認帳戶$/ do |email|
+  User.find_by_email(email).confirm!
+end
