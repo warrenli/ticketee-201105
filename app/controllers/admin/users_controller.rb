@@ -43,6 +43,14 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
+    if @user == current_user
+      flash[:alert] = t("admin_user.not_self_deleted_msg")
+    else
+      @user.destroy
+      flash[:notice] = t("admin_user.deleted_msg")
+    end
+
+    redirect_to admin_users_path
   end
 
   private

@@ -1,4 +1,6 @@
-<h2>Editing a ticket in <%= @project.name %></h2>
+<h2><%= t("tickets.edit_title") + " #{Ticket.model_name.human}" %> - <%= @project.name %></h2>
 <%= render 'form' %>
+<menu>
 <%= link_to t("tickets.show_title"), [@project, @ticket] %> |
-<%= link_to 'Back', project_tickets_path(@project) %>
+<%= link_to @project.name, @project %>
+</menu>
