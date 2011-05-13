@@ -59,7 +59,8 @@
       <p>Header</p>
     </header>
     <section class="main_content grid_16 clearfix">
-     <% flash.each do |name, msg| %>
+      <h1><%= link_to "Ticketee", root_path %></h1>
+      <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= yield %>

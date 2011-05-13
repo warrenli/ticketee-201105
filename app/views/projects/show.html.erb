@@ -6,4 +6,12 @@
   <%= link_to t("projects.delete_title"), @project, :method => :delete, :confirm => t("projects.confirm_msg") %>
 </menu>
 
+<hr />
+<h3><%= Ticket.model_name.human %></h3>
+<ul id="tickets">
+  <% @project.tickets.each do |ticket| %>
+    <li>#<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %></li>
+  <% end %>
+</ul>
+
 <%= link_to t('tickets.new_title'), new_project_ticket_path(@project) %>
