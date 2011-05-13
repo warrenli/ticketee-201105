@@ -1,6 +1,6 @@
 <h2><%= @ticket.title + " - #{@project.name }" %></h2>
 <%= simple_format(@ticket.description) %>
-
+<small><%= t("tickets.created_by_msg", :ticket_creator => @ticket.user.email) %></small>
 <menu>
   <%= link_to t("tickets.edit_title"), [:edit, @project, @ticket] %>
   <%= link_to t("tickets.delete_title"), [@project, @ticket], :method => :delete, :confirm => t("tickets.confirm_msg") %>

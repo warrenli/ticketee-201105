@@ -16,3 +16,14 @@ end
 假設  /^"([^\"]*)"已確認帳戶$/ do |email|
   User.find_by_email(email).confirm!
 end
+
+假設 /^已成功登入系統$/ do
+  steps %Q(
+    Given I am on the homepage
+    When I follow "登入"
+    And I fill in "電郵地址" with "#{@user.email}"
+    And I fill in "帳戶密碼" with "#{@user.password}"
+    And I press "登入"
+    Then I should see "登錄成功。"
+  )
+end

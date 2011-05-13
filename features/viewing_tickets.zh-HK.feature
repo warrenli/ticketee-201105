@@ -7,12 +7,15 @@
 
   背景:
     假設 選用 中文
-    假設 有一個名稱為"大中華"的專案
-    而且 這專案有一個工作單:
+    假設 有以下帳戶:
+      |       email       | password |
+      | user@ticketee.com | password |
+    而且 有一個名稱為"大中華"的專案
+    而且 "user@ticketee.com"給這個專案建立以下工作單:
       |     title     |    description     |
       |     賀新年     |  一個普天同慶的大日子  |
-    假設 有一個名稱為"運動會"的專案
-    而且 這專案有一個工作單:
+    而且 有一個名稱為"運動會"的專案
+    而且 "user@ticketee.com"給這個專案建立以下工作單:
       |     title     |    description   |
       |     售票服務    | 現有電腦系統須要更新 |
     而且 我來到首頁
