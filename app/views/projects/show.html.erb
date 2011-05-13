@@ -1,2 +1,6 @@
 <% title(@project.name, "Projects") %>
 <h2><%= @project.name %></h2>
+
+<menu>
+  <%= link_to t("projects.edit_title"), edit_project_path(@project) %>
+</menu>
