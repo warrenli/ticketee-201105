@@ -92,7 +92,7 @@ section.sub_footer p {
   text-align: center;
 }
 
-menu {
+menu, .auth_nav {
   float: right;
 }
 

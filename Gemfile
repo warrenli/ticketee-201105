@@ -6,6 +6,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'dynamic_form'
 gem 'jquery-rails'
 
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.4'
   gem 'fuubar'
