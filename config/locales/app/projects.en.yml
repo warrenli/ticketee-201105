@@ -11,3 +11,4 @@ en:
   projects:
     new_title: "New Project"
     created_msg: "Project has been created."
+    not_created_msg: "Project has not been created."
