@@ -1,0 +1,4 @@
+<h2>Editing a ticket in <%= @project.name %></h2>
+<%= render 'form' %>
+<%= link_to t("tickets.show_title"), [@project, @ticket] %> |
+<%= link_to 'Back', project_tickets_path(@project) %>

@@ -1,3 +1,6 @@
 <h2><%= @ticket.title + " - #{@project.name }" %></h2>
 <%= simple_format(@ticket.description) %>
 
+<menu>
+  <%= link_to t("tickets.edit_title"), [:edit, @project, @ticket] %>
+</menu>

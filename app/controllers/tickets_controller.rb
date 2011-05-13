@@ -6,6 +6,9 @@ class TicketsController < ApplicationController
     @ticket = @project.tickets.build
   end
 
+  def edit
+  end
+
   def create
     @ticket = @project.tickets.build(params[:ticket])
     if @ticket.save
@@ -14,6 +17,16 @@ class TicketsController < ApplicationController
     else
       flash[:error] = t("tickets.not_created_msg")
       render :action => "new"
+    end
+  end
+
+  def update
+    if @ticket.update_attributes(params[:ticket])
+      flash[:notice] = t("tickets.updated_msg")
+      redirect_to [@project, @ticket]
+    else
+      flash[:error] = t("tickets.not_updated_msg")
+      render :action => "edit"
     end
   end
 
