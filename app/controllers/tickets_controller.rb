@@ -30,6 +30,12 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    @ticket.destroy
+    flash[:notice] = t("tickets.deleted_msg")
+    redirect_to @project
+  end
+
   private
 
     def find_project
