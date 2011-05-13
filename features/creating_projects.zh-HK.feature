@@ -7,7 +7,11 @@
 
   背景:
     假設 選用 中文
-    而且 我來到首頁
+    假設 有以下帳戶:
+      |       email       | password | admin |
+      | user@ticketee.com | password | true  |
+    而且 已成功登入系統
+    假設 我來到首頁
     當 我點擊鏈接"新專案"
 
   場景: 建立專案

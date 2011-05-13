@@ -5,7 +5,11 @@ Feature: Creating projects
 
   Background:
     Given I choose English language
-    And I am on the homepage
+    Given there are the following users:
+      |       email       | password | admin |
+      | user@ticketee.com | password | true  |
+    And I am signed in as them
+    Given I am on the homepage
     When I follow "New Project"
 
   Scenario: Creating a project

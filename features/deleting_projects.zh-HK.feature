@@ -7,6 +7,10 @@
 
   背景:
     假設 選用 中文
+    假設 有以下帳戶:
+      |       email       | password | admin |
+      | user@ticketee.com | password | true  |
+    而且 已成功登入系統
 
   場景: 刪除一個專案
     假設 有一個名稱為"大中華"的專案

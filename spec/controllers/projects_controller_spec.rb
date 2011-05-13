@@ -3,6 +3,13 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  let(:user) do
+    user = Factory(:user)
+    user.confirm!
+    user
+  end
+  let(:project) { Factory(:project) }
+
   describe "language is English" do
     before(:each) do
       I18n.locale = "en"
@@ -13,6 +20,18 @@ describe ProjectsController do
       get :show, :id => "not-here"
       response.should redirect_to(projects_path)
       flash[:error].should eql(I18n.t("projects.not_found_msg"))
+    end
+
+    context "standard users" do
+      { :new => "get", :create => "post", :edit => "get",
+        :update => "put", :destroy => "delete" }.each_pair do |action, method|
+        it "cannot access the #{action} action" do
+          sign_in(:user, user)
+          send(method, action, :id => project.id)
+          response.should redirect_to(root_path)
+          flash[:alert].should eql( I18n.t("authenticate.must_admin_msg") )
+        end
+      end
     end
   end
 
@@ -26,6 +45,18 @@ describe ProjectsController do
       get :show, :id => "not-here"
       response.should redirect_to(projects_path)
       flash[:error].should eql(I18n.t("projects.not_found_msg"))
+    end
+
+    context "一般帳戶" do
+      { :new => "get", :create => "post", :edit => "get",
+        :update => "put", :destroy => "delete" }.each_pair do |action, method|
+        it "是不可以執行 \"#{action}\" 工作" do
+          sign_in(:user, user)
+          send(method, action, :id => project.id)
+          response.should redirect_to(root_path)
+          flash[:alert].should eql( I18n.t("authenticate.must_admin_msg") )
+        end
+      end
     end
   end
 end
