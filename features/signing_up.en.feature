@@ -13,4 +13,5 @@ Feature: Signing up
     And I fill in "Password" with "password"
     And I fill in "Password confirmation" with "password"
     And I press "Sign up"
-    Then I should see "You have signed up successfully."
+    Then I should see "You need to sign in or sign up before continuing."
+#    Then I should see "You have signed up successfully."
