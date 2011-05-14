@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_project
   before_filter :find_ticket, :only => [:show, :edit, :update, :destroy]
+  before_filter :authorize_create!, :only => [:new, :create]
 
   def new
     @ticket = @project.tickets.build
@@ -48,5 +49,12 @@ class TicketsController < ApplicationController
 
     def find_ticket
       @ticket = @project.tickets.find(params[:id])
+    end
+
+    def authorize_create!
+      if !current_user.admin? && cannot?("create tickets".to_sym, @project)
+        flash[:alert] = t("tickets.not_authorized_to_create_msg")
+        redirect_to @project
+      end
     end
 end

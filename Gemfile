@@ -7,6 +7,7 @@ gem 'dynamic_form'
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'cancan'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.4'

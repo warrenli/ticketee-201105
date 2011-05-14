@@ -12,6 +12,7 @@
       |       email       | password |
       | user@ticketee.com | password |
     而且 "user@ticketee.com"可以閱讀"大中華"專案
+    而且 "user@ticketee.com"可以在"大中華"專案建立工作單
     而且 已成功登入系統
     而且 我來到首頁
     當 我點擊鏈接"大中華"
