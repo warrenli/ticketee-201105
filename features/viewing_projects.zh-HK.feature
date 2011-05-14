@@ -7,6 +7,12 @@
 
   背景:
     假設 選用 中文
+    假設 有以下帳戶:
+      |       email       | password |
+      | user@ticketee.com | password |
+    而且 已成功登入系統
+    而且 有一個名稱為"大中華"的專案
+    而且 "user@ticketee.com"可以閱讀"大中華"專案
 
   場景: 顯示專案清單
     假設 有一個名稱為"大中華"的專案

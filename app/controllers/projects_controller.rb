@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authorize_admin!, :except => [:index, :show]
+  before_filter :authenticate_user!, :only => [:show]
   before_filter :find_project, :only => [:show, :edit, :update, :destroy]
 
   def index
@@ -32,7 +33,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = t("projects.updated_msg")
       redirect_to @project
     else
-      flash[:error] = t("projects.not_updated_msg")
+      flash[:alert] = t("projects.not_updated_msg")
       render :action => "edit"
     end
   end
@@ -45,9 +46,13 @@ class ProjectsController < ApplicationController
 
   private
     def find_project
-      @project = Project.find(params[:id])
+      @project = if current_user.admin?
+        Project.find(params[:id])
+      else
+        Project.readable_by(current_user).find(params[:id])
+      end
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = t("projects.not_found_msg")
+      flash[:alert] = t("projects.not_found_msg")
       redirect_to projects_path
     end
 end

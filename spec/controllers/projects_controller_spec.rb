@@ -13,9 +13,10 @@ describe ProjectsController do
     end
 
     it "displays an error message when asked for a missing project" do
+      sign_in(:user, user)
       get :show, :id => "not-here"
       response.should redirect_to(projects_path)
-      flash[:error].should eql(I18n.t("projects.not_found_msg"))
+      flash[:alert].should eql(I18n.t("projects.not_found_msg"))
     end
 
     context "standard users" do
@@ -28,6 +29,13 @@ describe ProjectsController do
           flash[:alert].should eql( I18n.t("authenticate.must_admin_msg") )
         end
       end
+
+      it "cannot access the show action" do
+        sign_in(:user, user)
+        get :show, :id => project.id
+        response.should redirect_to(projects_path)
+        flash[:alert].should eql(I18n.t("projects.not_found_msg"))
+      end
     end
   end
 
@@ -38,9 +46,10 @@ describe ProjectsController do
     end
 
     it "找不到專案時顯示錯誤信息" do
+      sign_in(:user, user)
       get :show, :id => "not-here"
       response.should redirect_to(projects_path)
-      flash[:error].should eql(I18n.t("projects.not_found_msg"))
+      flash[:alert].should eql(I18n.t("projects.not_found_msg"))
     end
 
     context "一般帳戶" do
@@ -52,6 +61,13 @@ describe ProjectsController do
           response.should redirect_to(root_path)
           flash[:alert].should eql( I18n.t("authenticate.must_admin_msg") )
         end
+      end
+
+      it "執行\"show\"找不到專案" do
+        sign_in(:user, user)
+        get :show, :id => project.id
+        response.should redirect_to(projects_path)
+        flash[:alert].should eql(I18n.t("projects.not_found_msg"))
       end
     end
   end
