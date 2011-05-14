@@ -7,6 +7,11 @@ def cannot_create_tickets!
   flash[:alert].should eql( I18n.t("tickets.not_authorized_to_create_msg") )
 end
 
+def cannot_update_tickets!
+  response.should redirect_to(project)
+  flash[:alert].should eql(I18n.t("tickets.not_authorized_to_update_msg"))
+end
+
 describe TicketsController do
   let(:user) { create_user! }
   let(:project) { Factory(:project) }
@@ -42,6 +47,16 @@ describe TicketsController do
         post :create, :project_id => project.id
         cannot_create_tickets!
       end
+
+      it "cannot edit a ticket without permission" do
+        get :edit, { :project_id => project.id, :id => ticket.id }
+        cannot_update_tickets!
+      end
+
+      it "cannot update a ticket without permission" do
+        put :update, { :project_id => project.id, :id => ticket.id }
+        cannot_update_tickets!
+      end
     end
   end
 
@@ -74,6 +89,16 @@ describe TicketsController do
       it "沒有工作單建立權限是不能執行這個工作" do
         post :create, :project_id => project.id
         cannot_create_tickets!
+      end
+
+      it "不可以嘗試修改專案的工作單" do
+        get :edit, { :project_id => project.id, :id => ticket.id }
+        cannot_update_tickets!
+      end
+
+      it "沒有工作單修改權限是不能執行這個工作" do
+        put :update, { :project_id => project.id, :id => ticket.id }
+        cannot_update_tickets!
       end
     end
   end

@@ -8,6 +8,10 @@ end
   create_permission(user, find_project(project), "create tickets")
 end
 
+假設 /^"([^\"]*)"可以在"([^\"]*)"專案修改工作單$/ do |user, project|
+  create_permission(user, find_project(project), "edit tickets")
+end
+
 
 def create_permission(email, permissible_object, action)
   Permission.create!(:user => User.find_by_email!(email),
