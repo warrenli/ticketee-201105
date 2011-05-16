@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      comment:
+        one: "Comment"
+        other: "Comments"
+    attributes:
+      comment:
+        text: "Text"
+
+  comments:
+    created_msg: "Comment has been created."
+    new_comment_title: "New comment"
+    not_created_msg: "Comment has not been created."
+    no_comment_text: "There are no comments for this ticket."

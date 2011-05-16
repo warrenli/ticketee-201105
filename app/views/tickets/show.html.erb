@@ -24,3 +24,16 @@
   <%= link_to t("tickets.delete_title"), [@project, @ticket], :method => :delete, :confirm => t("tickets.confirm_msg") %>
 <% end %>
 </menu>
+
+<hr/>
+<h3><%= t("activerecord.models.comment.other") %></h3>
+<div id='comments'>
+  <% if @ticket.comments.exists? %>
+    <%= render @ticket.comments.select(&:persisted?) %>
+  <% else %>
+    <%= t("comments.no_comment_text")%>
+  <% end %>
+</div>
+<hr/>
+
+<%= render "comments/form" %>

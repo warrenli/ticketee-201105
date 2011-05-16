@@ -1,0 +1,15 @@
+zh-HK:
+  activerecord:
+    models:
+      comment:
+        one: "回應"
+        other: "多個回應"
+    attributes:
+      comment:
+        text: "回應內容"
+
+  comments:
+    created_msg: "新回應已成功建立。"
+    new_comment_title: "新回應"
+    not_created_msg: "回應未能建立。"
+    no_comment_text: "工作單沒有任何回應。"

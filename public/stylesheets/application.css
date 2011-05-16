@@ -200,3 +200,23 @@ tr.even td {
 tr.odd td {
   background: #eee;
 }
+
+#ticket, .comment {
+  margin: 15px 0 15px 0;
+  padding: 15px;
+  background: #eaeaea;
+  border: 1px solid #e0e0e0;
+}
+
+.new_comment {
+  padding: 15px;
+  background: #eaeaea;
+}
+
+.comment, .new_comment {
+  width: 75%;
+}
+
+.comment .state {
+  display: inline;
+}

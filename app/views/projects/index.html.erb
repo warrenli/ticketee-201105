@@ -1,6 +1,6 @@
 <% title("#{Project.model_name.human}") %>
 <h2><%= "#{Project.model_name.human}" %></h2>
-<ul>
+<ul id='projects'>
 <% @projects.each do |project| %>
   <li><%= link_to project.name, project %></li>
 <% end %>
