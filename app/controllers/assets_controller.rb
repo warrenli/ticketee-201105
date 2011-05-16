@@ -1,4 +1,10 @@
 class AssetsController < ApplicationController
+  respond_to :html, :js
+
+  def new
+    @number = params[:number].to_i
+  end
+
   def show
     asset = Asset.find(params[:id])
     if can?(:view, asset.ticket.project)
