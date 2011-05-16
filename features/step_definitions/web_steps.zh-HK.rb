@@ -14,8 +14,12 @@ World(WithinHelpers)
 
 # Single-line step scoper
 # When /^(.*) within ([^:]+)$/ do |step, parent|
-#   with_scope(parent) { When step }
-# end
+當 /^(.*) 包含在"([^\"]*)"$/ do |step, parent|
+#  puts "step: [" + step + "]"
+  parent = '"' + parent + '"'
+#  puts "parent: [" + parent + "]"
+  with_scope(parent) { 當 step }
+end
 
 # Multi-line step scoper
 # When /^(.*) within ([^:]+):$/ do |step, parent, table_or_string|
@@ -90,6 +94,9 @@ end
 # When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
 #   attach_file(field, File.expand_path(path))
 # end
+當 /^加入附加文件檔"([^"]*)"到欄位"([^"]*)"$/ do |path, field|
+   attach_file(field, File.expand_path(path))
+end
 
 # Then /^(?:|I )should see "([^"]*)"$/ do |text|
 那麼 /^(?:|我)應該看到"([^\"]*)"(?:|的提示信息)$/ do |text|

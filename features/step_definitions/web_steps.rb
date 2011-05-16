@@ -33,6 +33,8 @@ World(WithinHelpers)
 
 # Single-line step scoper
 When /^(.*) within ([^:]+)$/ do |step, parent|
+#  puts "step: [" + step + "]"
+#  puts "parent: [" + parent + "]"
   with_scope(parent) { When step }
 end
 
