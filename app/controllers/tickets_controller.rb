@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
       flash[:notice] = t("tickets.created_msg")
       redirect_to [@project, @ticket]
     else
-      flash[:error] = t("tickets.not_created_msg")
+      flash[:alert] = t("tickets.not_created_msg")
       render :action => "new"
     end
   end
@@ -30,7 +30,7 @@ class TicketsController < ApplicationController
       flash[:notice] = t("tickets.updated_msg")
       redirect_to [@project, @ticket]
     else
-      flash[:error] = t("tickets.not_updated_msg")
+      flash[:alert] = t("tickets.not_updated_msg")
       render :action => "edit"
     end
   end
