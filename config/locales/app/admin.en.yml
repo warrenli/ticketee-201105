@@ -3,7 +3,7 @@ en:
     title: "Admin"
     welcome_msg: "Welcome to Ticketee's Admin Lounge. Please enjoy your stay."
   admin_user:
-    confirm_msg: "Are you sure you want to delete this user?"
+    confirm_delete_msg: "Are you sure you want to delete this user?"
     created_msg: "User has been created."
     deleted_msg: "User has been deleted."
     delete_title: "Delete"
@@ -13,5 +13,10 @@ en:
     not_created_msg: "User has not been created."
     not_self_deleted_msg: "You cannot delete yourself!"
     not_updated_msg: "User has not been updated."
+    permissions_title: "Permissions"
     updated_msg: "User has been updated."
     users_title: "Users"
+  admin_permission:
+    page_title: "Permissions for %{user}"
+    update_button: "Update"
+    updated_msg: "Permissions updated."

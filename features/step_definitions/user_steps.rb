@@ -23,6 +23,7 @@ Given /^I am signed in as "([^\"]*)"$/ do |email|
   @user = User.find_by_email!(email)
 #  steps("Given I am signed in as them")
   steps %Q(
+    Given I choose English language
     Given I am on the homepage
     When I follow "Sign in"
     And I fill in "Email" with "#{@user.email}"
