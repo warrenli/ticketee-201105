@@ -8,7 +8,7 @@ Given /^"([^"]*)" can create tickets in the "([^"]*)" project$/ do |user, projec
 end
 =end
 
-permission_step = /^"([^"]*)" can ([^"]*?) ([o|i]n)?\s?the "([^"]*)" project$/
+permission_step = /^"([^"]*)" can ([^"]*?) (on|in|from)?\s?the "([^"]*)" project$/
 
 Given permission_step do |user, permission, on, project|
   create_permission(user, find_project(project), permission)

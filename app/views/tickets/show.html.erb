@@ -2,6 +2,10 @@
 <%= simple_format(@ticket.description) %>
 <small><%= t("tickets.created_by_msg", :ticket_creator => @ticket.user.email) %></small>
 <menu>
-  <%= link_to t("tickets.edit_title"), [:edit, @project, @ticket] %>
+  <%= authorized?("edit tickets", @project) do %>
+    <%= link_to t("tickets.edit_title"), [:edit, @project, @ticket] %>
+  <% end %>
+<%= authorized?("delete tickets", @project) do %>
   <%= link_to t("tickets.delete_title"), [@project, @ticket], :method => :delete, :confirm => t("tickets.confirm_msg") %>
+<% end %>
 </menu>
