@@ -1,0 +1,15 @@
+en:
+  activerecord:
+#    models:
+#      state:
+#        one: "State"
+#        other: "States"
+#    attributes:
+#      state:
+#        name: "Text"
+#        color: "Color"
+#        background: "Background"
+#
+#  states:
+#    created_msg: "State has been created."
+#    not_created_msg: "State has not been created."

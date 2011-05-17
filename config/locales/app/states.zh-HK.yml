@@ -1,0 +1,15 @@
+zh-HK:
+  activerecord:
+    models:
+      state:
+        one: "狀態"
+        other: "多個狀態"
+#    attributes:
+#      state:
+#        name: "Text"
+#        color: "Color"
+#        background: "Background"
+#
+#  states:
+#    created_msg: "State has been created."
+#    not_created_msg: "State has not been created."

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       flash[:notice] = t("comments.created_msg")
       redirect_to [@project, @ticket]
     else
+      @states = State.all
       flash[:alert] = t("comments.not_created_msg")
       render :template => "tickets/show"
     end

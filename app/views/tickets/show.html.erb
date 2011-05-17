@@ -1,6 +1,7 @@
 <h2><%= @ticket.title + " - #{@project.name }" %></h2>
 <div id="ticket">
   <%= simple_format(@ticket.description) %>
+  <%= render @ticket.state if @ticket.state %>
   <small><%= t("tickets.created_by_msg", :ticket_creator => @ticket.user.email) %></small>
   <% if @ticket.assets.exists? %>
     <h3><%= t("tickets.attached_file") %></h3>

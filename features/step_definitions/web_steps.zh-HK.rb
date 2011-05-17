@@ -75,8 +75,9 @@ end
 end
 
 # When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
-#   select(value, :from => field)
-# end
+當 /^(?:|我)選擇"([^\"]*)"為"([^\"]*)"?$/ do |field, value|
+  select(value, :from => field)
+end
 
 # When /^(?:|I )check "([^"]*)"$/ do |field|
 當 /^(?:|我)在"([^\"]*)"框打勾$/ do |field|

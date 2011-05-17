@@ -7,6 +7,7 @@ en:
     attributes:
       comment:
         text: "Text"
+        state_id: "State"
 
   comments:
     created_msg: "Comment has been created."

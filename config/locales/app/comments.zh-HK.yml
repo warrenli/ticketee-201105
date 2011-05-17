@@ -7,6 +7,7 @@ zh-HK:
     attributes:
       comment:
         text: "回應內容"
+        state_id: "狀態"
 
   comments:
     created_msg: "新回應已成功建立。"
