@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_locale
+  before_filter :set_locale, :find_states
 
   private
 
@@ -20,5 +20,9 @@ class ApplicationController < ActionController::Base
       flash[:alert] = t("authenticate.must_admin_msg")
       redirect_to root_path
     end
+  end
+
+  def find_states
+    @states = State.all
   end
 end
