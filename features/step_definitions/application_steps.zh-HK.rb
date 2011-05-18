@@ -9,3 +9,9 @@ end
   css("a").detect { |a| a.text == text }.should(be_nil,
     "Expected to not see the #{text.inspect} link, but did.")
 end
+
+那麼 /^我應該不會看到"([^"]*)"元件$/ do |css|
+  lambda { find(:css, css) }.should(
+    raise_error(Capybara::ElementNotFound, "Unable to find '#{css}'")
+  )
+end

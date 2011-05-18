@@ -16,6 +16,9 @@ end
   create_permission(user, find_project(project), "delete tickets")
 end
 
+假設 /^"([^"]*)"可以更新"([^"]*)"專案的工作單狀態$/ do |user, project|
+  create_permission(user, find_project(project), "change states")
+end
 
 def create_permission(email, permissible_object, action)
   Permission.create!(:user => User.find_by_email!(email),

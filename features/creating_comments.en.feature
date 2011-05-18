@@ -16,6 +16,7 @@ Feature: Creating comments
       | Change a ticket's state | You should be able to create a comment |
     Given I am on the homepage
     Given there is a state called "Open"
+    Given there is a state called "Closed"
     When I follow "Ticketee" within "#projects"
 
   Scenario: Creating a comment
@@ -32,6 +33,7 @@ Feature: Creating comments
     And I should see "Text can't be blank"
 
   Scenario: Changing a ticket's state
+    Given "user@ticketee.com" can change states on the "Ticketee" project
     When I follow "Change a ticket's state"
     When I fill in "Text" with "This is a real issue"
     And I select "Open" from "State"
@@ -39,3 +41,13 @@ Feature: Creating comments
     Then I should see "Comment has been created."
     And I should see "Open" within "#ticket .state"
     Then I should see "State: Open" within "#comments"
+    When I fill in "Text" with "Issue resolved"
+    And I select "Closed" from "State"
+    And I press "Create Comment"
+    Then I should see "Comment has been created."
+    And I should see "Closed" within "#ticket .state"
+    Then I should see "Open → Closed" within "#comments"
+
+  Scenario: A user without permission cannot change the state
+    When I follow "Change a ticket's state"
+    Then I should not see the "#comment_state_id" element

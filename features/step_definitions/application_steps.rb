@@ -11,3 +11,9 @@ end
 def css(selector)
   Nokogiri::HTML(body).css(selector)
 end
+
+Then /^I should not see the "([^"]*)" element$/ do |css|
+  lambda { find(:css, css) }.should(
+    raise_error(Capybara::ElementNotFound, "Unable to find '#{css}'")
+  )
+end
