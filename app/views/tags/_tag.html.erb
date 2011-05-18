@@ -6,6 +6,7 @@
         :method => :delete,
         :remote => true,
         :id => "delete-#{tag.name}" %>
-  <%= tag.name %>
+  <%= link_to tag.name, search_project_tickets_path(@ticket.project,
+        :search => "tag:#{tag.name}") %>
 <% end %>
 </span>
