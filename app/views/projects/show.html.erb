@@ -11,7 +11,7 @@
 <hr />
 <h3><%= Ticket.model_name.human %></h3>
 <ul id="tickets">
-  <% @project.tickets.each do |ticket| %>
+  <% @tickets.each do |ticket| %>
     <li>
       <%= render ticket.state if ticket.state %>
       #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
@@ -21,4 +21,11 @@
 
 <%= authorized?(:"create tickets", @project) do %>
   <%= link_to t('tickets.new_title'), new_project_ticket_path(@project) %>
+<% end %>
+
+<hr />
+<%= form_tag search_project_tickets_path(@project), :method => :get do %>
+  <%= label_tag 'search', t("projects.search") %>
+  <%= text_field_tag "search", params[:search] %>
+  <%= submit_tag t("projects.search") %>
 <% end %>

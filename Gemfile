@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
 gem 'paperclip'
+gem 'searcher'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.4'

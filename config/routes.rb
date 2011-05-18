@@ -2,7 +2,11 @@ Ticketee::Application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets do

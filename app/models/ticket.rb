@@ -1,4 +1,8 @@
 class Ticket < ActiveRecord::Base
+  searcher do
+    label :tag, :from => :tags, :field => "name"
+  end
+
   validates :title, :presence => true
   validates :description, :presence => true, :length => { :minimum => 10 }
   belongs_to :project
