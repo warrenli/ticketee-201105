@@ -1,1 +1,11 @@
-<span class='tag'><%= tag.name %></span>
+<% # 'tag.name.parameterize' is not working for Chinese string, use 'tag.name' instead %>
+<span class='tag' id='tag-<%= tag.name %>'>
+<% if can?(:"manage tags", @ticket.project) || current_user.admin? %>
+  <%= link_to "x",
+        remove_ticket_tag_path(@ticket, tag),
+        :method => :delete,
+        :remote => true,
+        :id => "delete-#{tag.name}" %>
+  <%= tag.name %>
+<% end %>
+</span>
