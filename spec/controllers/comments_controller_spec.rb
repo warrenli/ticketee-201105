@@ -31,6 +31,13 @@ describe CommentsController do
         ticket.reload
         ticket.state.should eql(nil)
       end
+
+      it "cannot tag a ticket without permission" do
+        post :create, { :tags => "one two", :comment => { :text => "Tag!" },
+                        :ticket_id => ticket.id }
+        ticket.reload
+        ticket.tags.should be_empty
+      end
     end
   end
 
@@ -51,6 +58,13 @@ describe CommentsController do
                         :ticket_id => ticket.id, :tags => "" }
         ticket.reload
         ticket.state.should eql(nil)
+      end
+
+      it "不能給工作單加入標籤" do
+        post :create, { :tags => "one two", :comment => { :text => "Tag!" },
+                        :ticket_id => ticket.id }
+        ticket.reload
+        ticket.tags.should be_empty
       end
     end
   end

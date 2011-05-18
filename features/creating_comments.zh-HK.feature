@@ -13,6 +13,7 @@
     而且 已成功登入系統
     而且 有一個名稱為"大中華"的專案
     而且 "user@ticketee.com"可以閱讀"大中華"專案
+    而且 "user@ticketee.com"可以標籤"大中華"專案
     而且 "user@ticketee.com"給這個專案建立以下工作單:
       |      title      |         description      |
       |   工作單狀態    |  可建立回應記錄工作進度  |

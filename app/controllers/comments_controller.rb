@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
 
     @comment = @ticket.comments.build(params[:comment].merge(:user => current_user))
     if @comment.save
-      @ticket.tag!(params[:tags])
+      if can?(:"manage tags", @ticket.project) || current_user.admin?
+        @ticket.tag!(params[:tags])
+      end
       flash[:notice] = t("comments.created_msg")
       redirect_to [@project, @ticket]
     else

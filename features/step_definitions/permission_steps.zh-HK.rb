@@ -20,6 +20,11 @@ end
   create_permission(user, find_project(project), "change states")
 end
 
+假設 /^"([^"]*)"可以標籤"([^"]*)"專案$/ do |user, project|
+  create_permission(user, find_project(project), "manage tags")
+end
+
+
 def create_permission(email, permissible_object, action)
   Permission.create!(:user => User.find_by_email!(email),
                      :permissible => permissible_object,

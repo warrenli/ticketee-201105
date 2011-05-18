@@ -63,6 +63,15 @@ describe TicketsController do
         response.should redirect_to(project)
         flash[:alert].should eql(I18n.t("tickets.not_authorized_to_delete_msg"))
       end
+
+      it "can create tickets, but not tag them" do
+        Permission.create(:user => user, :permissible => project, :action => "create tickets")
+        post :create, :ticket => { :title => "New ticket!",
+                                   :description => "Brand spankin' new" },
+                      :project_id => project.id,
+                      :tags => "these are tags"
+        Ticket.last.tags.should be_empty
+      end
     end
   end
 
@@ -111,6 +120,15 @@ describe TicketsController do
         delete :destroy, { :project_id => project.id, :id => ticket.id }
         response.should redirect_to(project)
         flash[:alert].should eql(I18n.t("tickets.not_authorized_to_delete_msg"))
+      end
+
+      it "有工作單建立權限仍不可以給工作單加入標籤" do
+        Permission.create(:user => user, :permissible => project, :action => "create tickets")
+        post :create, :ticket => { :title => "新工作單",
+                                   :description => "測試工作單的標籤功動" },
+                      :project_id => project.id,
+                      :tags => "測試 工作單 標籤"
+        Ticket.last.tags.should be_empty
       end
     end
   end
