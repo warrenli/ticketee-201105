@@ -4,12 +4,8 @@ zh-HK:
       state:
         one: "狀態"
         other: "多個狀態"
-#    attributes:
-#      state:
-#        name: "Text"
-#        color: "Color"
-#        background: "Background"
-#
-#  states:
-#    created_msg: "State has been created."
-#    not_created_msg: "State has not been created."
+    attributes:
+      state:
+        name: "名稱"
+        color: "前台顏色"
+        background: "背景顏色"

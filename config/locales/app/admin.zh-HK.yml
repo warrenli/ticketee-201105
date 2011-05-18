@@ -20,3 +20,8 @@ zh-HK:
     page_title: "帳戶權限 - %{user}"
     update_button: "更新"
     updated_msg: "權限已修改。"
+  admin_state:
+    created_msg: "新狀態已成功建立。"
+    new_title: "新狀態"
+    not_created_msg: "狀態未能建立。"
+    states_title: "狀態"

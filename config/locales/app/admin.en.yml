@@ -20,3 +20,8 @@ en:
     page_title: "Permissions for %{user}"
     update_button: "Update"
     updated_msg: "Permissions updated."
+  admin_state:
+    created_msg: "State has been created."
+    new_title: "New State"
+    not_created_msg: "State has not been created."
+    states_title: "States"

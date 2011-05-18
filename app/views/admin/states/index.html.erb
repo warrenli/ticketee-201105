@@ -1,0 +1,10 @@
+<% title("#{State.model_name.human}") %>
+<h2><%= "#{State.model_name.human}" %></h2>
+
+<%= link_to t("admin_state.new_title"), new_admin_state_path %>
+
+<ul id='states'>
+<% for state in @states %>
+  <li><%= state.name %> <%= render "states/state", :state => state %></li>
+<% end %>
+</ul>
