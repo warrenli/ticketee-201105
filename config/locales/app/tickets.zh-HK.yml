@@ -8,6 +8,7 @@ zh-HK:
       ticket:
         title: "標題"
         description: "明細"
+        tags: "標籤"
 
   tickets:
     attached_file: "附加檔案"

@@ -6,5 +6,14 @@ class Ticket < ActiveRecord::Base
   belongs_to :state
   has_many :assets
   has_many :comments
+  has_and_belongs_to_many :tags
   accepts_nested_attributes_for :assets, :allow_destroy => true, :reject_if => :all_blank
+
+  def tag!(tags)
+    tags = tags.split(" ").map do |tag|
+      Tag.find_or_create_by_name(tag)
+    end
+
+    self.tags << tags
+  end
 end
