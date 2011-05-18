@@ -27,7 +27,7 @@ describe CommentsController do
 
       it "cannot transition a state by passing through state_id" do
         post :create, { :comment => { :text => "Hacked!", :state_id => state.id },
-                        :ticket_id => ticket.id }
+                        :ticket_id => ticket.id, :tags => ""}
         ticket.reload
         ticket.state.should eql(nil)
       end
@@ -48,7 +48,7 @@ describe CommentsController do
 
       it "不能因加入回應而改變工作單狀態" do
         post :create, { :comment => { :text => "Hacked!", :state_id => state.id },
-                        :ticket_id => ticket.id }
+                        :ticket_id => ticket.id, :tags => "" }
         ticket.reload
         ticket.state.should eql(nil)
       end
