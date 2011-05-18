@@ -16,4 +16,12 @@ class Admin::StatesController < ApplicationController
       render :action => "new"
     end
   end
+
+  def make_default
+    @state = State.find(params[:id])
+    @state.default!
+
+    flash[:notice] = t("admin_state.make_default_msg", :state_name => @state.name)
+    redirect_to admin_states_path
+  end
 end

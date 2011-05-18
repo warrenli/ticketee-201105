@@ -22,6 +22,8 @@ en:
     updated_msg: "Permissions updated."
   admin_state:
     created_msg: "State has been created."
+    make_default_msg: "%{state_name} is now the default state."
+    make_default_txt: "Make default"
     new_title: "New State"
     not_created_msg: "State has not been created."
     states_title: "States"

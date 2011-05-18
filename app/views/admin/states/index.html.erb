@@ -5,6 +5,9 @@
 
 <ul id='states'>
 <% for state in @states %>
-  <li><%= state.name %> <%= render "states/state", :state => state %></li>
+  <li id='state_<%= state.id %>'>
+    <%= state.name %>&nbsp;&nbsp;<%= render "states/state", :state => state %>&nbsp;&nbsp;
+    <%= link_to t("admin_state.make_default_txt"), make_default_admin_state_path(state) %>
+  </li>
 <% end %>
 </ul>

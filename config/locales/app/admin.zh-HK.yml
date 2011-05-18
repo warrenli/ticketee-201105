@@ -22,6 +22,8 @@ zh-HK:
     updated_msg: "權限已修改。"
   admin_state:
     created_msg: "新狀態已成功建立。"
+    make_default_msg: "%{state_name} 已成為預設狀態。"
+    make_default_txt: "預設狀態"
     new_title: "新狀態"
     not_created_msg: "狀態未能建立。"
     states_title: "狀態"
