@@ -1,0 +1,7 @@
+你好！
+
+"<%= @comment.user.email %>" 剛更新了 <%= @comment.ticket.project.name %> 的工作單 <%= @comment.ticket.title %>。
+最新回應是:
+<%= simple_format(@comment.text) %>
+
+閣下可以用這個網址"<%= project_ticket_url(@comment.ticket.project, @comment.ticket) %>"瀏覽這工作單

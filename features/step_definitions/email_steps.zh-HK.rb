@@ -43,16 +43,18 @@ World(EmailHelpers)
 #
 
 # Given /^(?:a clear email queue|no emails have been sent)$/ do
-#   reset_mailer
-# end
+假設 /^電子郵件隊列沒有任何郵件$/ do
+  reset_mailer
+end
 
 #
 # Check how many emails have been sent/received
 #
 
 # Then /^(?:I|they|"([^"]*?)") should receive (an|no|\d+) emails?$/ do |address, amount|
-#   unread_emails_for(address).size.should == parse_email_count(amount)
-# end
+那麼 /^"([^"]*)"應該收到(\d+)封電子郵件$/ do |address, amount|
+  unread_emails_for(address).size.should == parse_email_count(amount)
+end
 
 # Then /^(?:I|they|"([^"]*?)") should have (an|no|\d+) emails?$/ do |address, amount|
 #   mailbox_for(address).size.should == parse_email_count(amount)
@@ -72,8 +74,9 @@ World(EmailHelpers)
 
 # Opens the most recently received email
 # When /^(?:I|they|"([^"]*?)") opens? the email$/ do |address|
-#   open_email(address)
-# end
+當 /^"([^"]*)"打開電子郵件$/ do |address|
+  open_email(address)
+end
 
 
 當 /^"([^"]*)"閱讀標題為"([^"]*)"的電子郵件$/ do |address, subject|
@@ -92,16 +95,18 @@ end
 #
 
 # Then /^(?:I|they) should see "([^"]*?)" in the email subject$/ do |text|
-#   current_email.should have_subject(text)
-# end
+那麼 /^(?:|我)應該發現電子郵件標題為"([^"]*?)"$/ do |text|
+  current_email.should have_subject(text)
+end
 
 # Then /^(?:I|they) should see \/([^"]*?)\/ in the email subject$/ do |text|
 #   current_email.should have_subject(Regexp.new(text))
 # end
 
 # Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
-#   current_email.default_part_body.to_s.should include(text)
-# end
+那麼 /^在電子郵件裡中應該寫着"([^"]*)"$/ do |text|
+  current_email.default_part_body.to_s.should include(text)
+end
 
 # Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
 #   current_email.default_part_body.to_s.should =~ Regexp.new(text)
@@ -173,12 +178,12 @@ end
 #   visit_in_email(link)
 # end
 
-當 /^按下電子郵件裡第一個鏈接$/ do
-  click_first_link_in_email
-end
 # When /^(?:I|they) click the first link in the email$/ do
 #   click_first_link_in_email
 # end
+當 /^(?:|我)按下電子郵件裡第一個鏈接$/ do
+  click_first_link_in_email
+end
 
 #
 # Debugging
@@ -187,8 +192,9 @@ end
 #
 
 # Then /^save and open current email$/ do
-#   EmailSpec::EmailViewer::save_and_open_email(current_email)
-# end
+那麼 /^打開當前的電子郵件$/ do
+  EmailSpec::EmailViewer::save_and_open_email(current_email)
+end
 
 # Then /^save and open all text emails$/ do
 #   EmailSpec::EmailViewer::save_and_open_all_text_emails
