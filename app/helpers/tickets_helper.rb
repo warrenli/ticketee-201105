@@ -10,4 +10,13 @@ module TicketsHelper
       end
     end
   end
+
+  def toggle_watching_button
+    text = if @ticket.watchers.include?(current_user)
+      t("tickets.unsubscribe_btn")
+    else
+      t("tickets.subscribe_btn")
+    end
+    button_to(text, watch_project_ticket_path(@ticket.project, @ticket))
+  end
 end

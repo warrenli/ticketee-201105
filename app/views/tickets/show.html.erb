@@ -28,6 +28,17 @@
 </menu>
 
 <hr/>
+<div id='watchers'>
+  <%= toggle_watching_button %>
+  <h4><%= t("tickets.watchers_title") %></h4>
+  <ul>
+   <% @ticket.watchers.each do |watcher| %>
+      <li><%= watcher %></li>
+    <% end %>
+  </ul>
+</div>
+
+<hr/>
 <h3><%= t("activerecord.models.comment.other") %></h3>
 <div id='comments'>
   <% if @ticket.comments.exists? %>
