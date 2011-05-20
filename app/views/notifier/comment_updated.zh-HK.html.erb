@@ -1,0 +1,15 @@
+== 如要回覆、請寫在這條線之上 ==
+<img src='http://ticketeeapp.com/images/logo.png' alt='Ticketee' />
+
+<p>
+  你好！
+</p>
+
+<p>
+  "<%= @comment.user.email %>" 剛更新了 <%= @comment.ticket.project.name %> 的工作單 <%= @comment.ticket.title %>。 最新回應是:</p>
+
+<blockquote><%= @comment.text %></blockquote>
+
+<p>
+  閣下可以用<%= link_to "這個網址瀏覽這工作單", project_ticket_url(@comment.ticket.project, @comment.ticket) %>
+</p>

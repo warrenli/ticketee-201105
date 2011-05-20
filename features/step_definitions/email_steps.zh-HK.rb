@@ -175,8 +175,9 @@ end
 #
 
 # When /^(?:I|they) follow "([^"]*?)" in the email$/ do |link|
-#   visit_in_email(link)
-# end
+當 /^(?:|我)點擊電子郵件裡鏈接"([^"]*?)"$/ do |link|
+  visit_in_email(link)
+end
 
 # When /^(?:I|they) click the first link in the email$/ do
 #   click_first_link_in_email

@@ -34,5 +34,10 @@ Feature: Ticket notifications
     # Then save and open current email
     Then they should see "updated the Release date ticket" in the email body
     And they should see "[ticketee] TextMate 2 - Release date" in the email subject
-    When they click the first link in the email
+    And the email should contain 2 parts
+    And there should be a part with content type "text/plain"
+    And there should be a part with content type "text/html"
+
+    # When they click the first link in the email
+    When they follow "view this ticket online" in the email
     Then I should be on the "Release date" ticket in the "TextMate 2" project
