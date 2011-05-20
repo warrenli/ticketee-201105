@@ -57,8 +57,9 @@ end
 end
 
 # Then /^(?:I|they|"([^"]*?)") should have (an|no|\d+) emails?$/ do |address, amount|
-#   mailbox_for(address).size.should == parse_email_count(amount)
-# end
+那麼 /^"([^"]*)"的電子郵箱應該(沒有|\d+封)郵件$/ do |address, amount|
+  mailbox_for(address).size.should == parse_email_count(amount)
+end
 
 # Then /^(?:I|they|"([^"]*?)") should receive (an|no|\d+) emails? with subject "([^"]*?)"$/ do |address, amount, subject|
 #   unread_emails_for(address).select { |m| m.subject =~ Regexp.new(subject) }.size.should == parse_email_count(amount)
