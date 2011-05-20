@@ -6,7 +6,7 @@ class Notifier < ActionMailer::Base
     users = comment.ticket.watchers - [comment.user]
     project_id = comment.ticket.project_id
     ticket_id = comment.ticket_id
-    from_address = "Ticketee <ticketee+#{project_id}+#{ticket_id}@gmail.com>"
+    from_address = "Ticketee <youraccount+#{project_id}+#{ticket_id}@example.com>"
 
     mail(:to => users.map(&:email),
          :subject => "[ticketee] #{comment.ticket.project.name} - " +
