@@ -22,8 +22,9 @@ describe "/api/v1/projects", :type => :api do
         Factory(:project, :name => "Access denied.")
       end
 
-      let(:url) { "/api/v1/projects" }
       context "index" do
+        let(:url) { "/api/v1/projects" }
+
         it "JSON" do
           get "#{url}.json", :token => token
           projects_json = Project.readable_by(user).to_json
@@ -40,6 +41,27 @@ describe "/api/v1/projects", :type => :api do
           last_response.body.should eql(Project.readable_by(user).to_xml)
           projects = Nokogiri::XML(last_response.body)
           projects.css("project name").text.should eql("Inspector")
+        end
+      end
+
+      context "show" do
+        let(:url) { "/api/v1/projects/#{project.id}"}
+
+        before do
+          Factory(:ticket, :title => "A ticket, nothing more.",
+                  :project => project)
+        end
+
+        it "JSON" do
+          get "#{url}.json", :token => token
+          last_response.body.should eql(project.to_json(:methods => "last_ticket"))
+          last_response.status.should eql(200)
+
+          project_response = JSON.parse(last_response.body)["project"]
+
+          ticket_title = project_response["last_ticket"]["ticket"]["title"]
+          ticket_title.should_not be_blank
+          ticket_title.should eql("A ticket, nothing more.")
         end
       end
     end
