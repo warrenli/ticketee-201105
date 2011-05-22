@@ -1,5 +1,18 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "language is English" do
+    before(:each) do
+      I18n.locale = "en"
+      I18n.default_locale = "en"
+    end
+
+    it "resets user request count" do
+      user = Factory(:user)
+      user.update_attribute(:request_count, 100)
+      User.reset_request_count!
+      user.reload
+      user.request_count.should eql(0)
+    end
+  end
 end
