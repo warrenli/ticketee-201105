@@ -87,5 +87,35 @@ describe "/api/v1/projects", :type => :api do
         last_response.body.should eql(errors.to_json)
       end
     end
+
+    context "updating a project" do
+      let(:url) { "/api/v1/projects/#{project.id}" }
+      it "successful JSON" do
+        project.name.should eql("Inspector")
+        put "#{url}.json", :token => token,
+                            :project => {
+                              :name => "Not Inspector"
+                            }
+        last_response.status.should eql(200)
+
+        project.reload
+        project.name.should eql("Not Inspector")
+        last_response.body.should eql("{}")
+      end
+
+      it "unsuccessful JSON" do
+        project.name.should eql("Inspector")
+        put "#{url}.json", :token => token,
+                            :project => {
+                              :name => ""
+                            }
+        last_response.status.should eql(422)
+
+        project.reload
+        project.name.should eql("Inspector")
+        error = { :name => ["can't be blank"] }
+        last_response.body.should eql(error.to_json)
+      end
+    end
   end
 end
